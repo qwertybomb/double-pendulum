@@ -7,7 +7,7 @@
 #include <SDL2/SDL.h>
 
 /* constants */
-#define WINDOW_WIDTH (600)
+#define WINDOW_WIDTH (900)
 #define WINDOW_HEIGHT (600)
 #define PI (3.141592653589793f)
 #define G (0.01f)
@@ -60,9 +60,9 @@ static void update_state(state_t *this, SDL_Renderer *renderer, SDL_Texture *tex
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
 		/* draw the lines between the two points */
-		float2 pos1 = this->r.x * (float2) { sinf(this->a.x), cosf(this->a.x) } + (float2) { 300, 50 };
+		float2 pos1 = this->r.x * (float2) { sinf(this->a.x), cosf(this->a.x) } + (float2) { WINDOW_WIDTH / 2, 50 };
 		float2 pos2 = pos1 + this->r.y * (float2) { sinf(this->a.y), cosf(this->a.y) };
-		SDL_RenderDrawLine(renderer, 300, 50, pos1.x, pos1.y);
+		SDL_RenderDrawLine(renderer, WINDOW_WIDTH / 2, 50, pos1.x, pos1.y);
 	    SDL_RenderDrawLine(renderer, pos1.x, pos1.y, pos2.x, pos2.y);
 
 		/* draw the two points */
