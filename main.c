@@ -74,7 +74,7 @@ static void update_state(state_t *this, SDL_Renderer *renderer, SDL_Texture *tex
 			&& floorf(pos2.y) >= 0 && floorf(pos2.y) < WINDOW_HEIGHT)
 		{
 			uint32_t *writing_pixel = &canvas[(uint32_t)(floorf(pos2.y) * WINDOW_WIDTH + floorf(pos2.x))];
-			*writing_pixel = 255;
+			*writing_pixel -= (15 << 8) | (15 << 16) | (15 << 24);
 		}
 
 		/* show renderer to screen */
