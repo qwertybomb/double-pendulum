@@ -54,7 +54,7 @@ static void update_state(state_t *this, SDL_Renderer *renderer, SDL_Texture *tex
 		SDL_UpdateTexture(texture, 0, canvas, sizeof(uint32_t) * WINDOW_WIDTH);
 
 		/* draw the canvas */
-		SDL_RenderCopy(renderer, texture, 0, 0);
+		SDL_RenderCopy(renderer, texture, NULL, NULL);
 
 		/* set the drawing color to black */
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
@@ -120,6 +120,7 @@ static void update_state(state_t *this, SDL_Renderer *renderer, SDL_Texture *tex
 
 }
 
+/* yes main does need to have this signature see https://stackoverflow.com/questions/11976084/why-sdl-defines-main-macro */
 int main(int argc, char *argv[])
 {
 	/* we don't need these */
@@ -168,7 +169,7 @@ int main(int argc, char *argv[])
 		.a = { PI / 1, PI / 4  },
 		/* create a canvas for keeping track of the path of the pendulum */
 		.canvas = ({ uint32_t * canvas = malloc(sizeof(uint32_t) * WINDOW_WIDTH * WINDOW_HEIGHT);
-					 /* fill the grid with white */
+					 /* fill the canvas with white */
 					 memset(canvas, 255, sizeof(uint32_t) * WINDOW_WIDTH * WINDOW_HEIGHT);
 					 canvas;
 		}) 
@@ -184,7 +185,6 @@ int main(int argc, char *argv[])
 					quit = true;
 				} break;
 			}
-
 		/* draw to renderer */
 		update_state(&state, renderer, texture, state.canvas);
 	}
