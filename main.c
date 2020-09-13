@@ -10,7 +10,7 @@
 #define WINDOW_WIDTH (900)
 #define WINDOW_HEIGHT (600)
 #define PI (3.141592653589793f)
-#define G (0.01f)
+#define G (.01f)
 
 /* typedefs */
 typedef float float2 __attribute__((ext_vector_type(2)));
@@ -99,10 +99,10 @@ static void update_state(state_t *this, SDL_Renderer *renderer, SDL_Texture *tex
 		/* y */
 		{
 			float num1 = 2 * sinf(this->a.x - this->a.y);
-			float num2 = (this->a_velocity.x * this->a_velocity.y * this->r.x * (this->m.x + this->m.y));
+			float num2 = (this->a_velocity.x * this->a_velocity.x * this->r.x * (this->m.x + this->m.y));
 			float num3 = G * (this->m.x + this->m.y) * cosf(this->a.x);
 			float num4 = this->a_velocity.y * this->a_velocity.y * this->r.y * this->m.y * cosf(this->a.x-this->a.y);
-			float den = this->r.x * (2 * this->m.x + this->m.y - this->m.y * cosf(2 * this->a.x - 2 * this->a.y));
+			float den = this->r.y * (2 * this->m.x + this->m.y - this->m.y * cosf(2 * this->a.x - 2 * this->a.y));
 
 			a_acceleration.y = (num1 * (num2 + num3 + num4)) / den;
 		}
