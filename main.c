@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
 	state_t state = {
 		.r = {200, 200},
 		.m = {20, 20},
-		.a = { PI / 2, PI / 8  },
+		.a = { PI / 1, PI / 4  },
 		/* create a canvas for keeping track of the path of the pendulum */
 		.canvas = ({ uint32_t * canvas = malloc(sizeof(uint32_t) * WINDOW_WIDTH * WINDOW_HEIGHT);
 					 /* fill the grid with white */
